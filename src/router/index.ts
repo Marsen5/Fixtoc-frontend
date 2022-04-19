@@ -1,24 +1,104 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    name: 'login',
+    component: () => import('../components/LoginVue.vue'),
+    meta: {
+      isPublic: true
+    }
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+    path: '/home',
+    name: 'home',
+    component: () => import('../views/HomeView.vue')
+  },
+  {
+    path: '/signup',
+    name: 'SignUp',
+    component: () => import('../components/SignupVue.vue')
+  },
+  /* {
+    path: '/buscarCliente',
+    name: 'BuscarCliente',
+    component: () => import('../views/Clientes/BuscarCliente.vue')
+  },
+  {
+    path: '/buscarIncidencia',
+    name: 'buscarIncidencia',
+    component: () => import('../views/Incidencias/BuscarIncidencia.vue')
+  },
+  {
+    path: '/buscarFactura',
+    name: 'BuscarFactura',
+    component: () => import('../views/Facturas/BuscarFacturas.vue')
+  },
+  {
+    path: '/buscarTecnico',
+    name: 'BuscarTecnico',
+    component: () => import('../views/Tecnicos/BuscarTecnico.vue')
+  }, */
 ]
 
+/* {
+  path: '/',
+  name: 'Login',
+  component: LoginVue,
+  meta: {
+    isPublic: true
+  }
+},
+{
+  path: '/Inicio',
+  name: 'Inicio',
+  component: () => import('../views/Inicio.vue')
+},
+{
+  path: '/BuscarCliente',
+  name: 'BuscarCliente',
+  component: () => import('../views/Clientes/BuscarCliente.vue')
+}
+,
+{
+  path: '/BuscarIncidencia',
+  name: 'BuscarIncidencia',
+  component: () => import('../views/Incidencias/BuscarIncidencia.vue')
+},
+,
+{
+  path: '/BuscarFactura',
+  name: 'BuscarFactura',
+  component: () => import('../views/Facturas/BuscarFactura.vue')
+},
+{
+  path: '/BuscarTecnico',
+  name: 'BuscarTecnico',
+  component: () => import('../views/Trabajadores/BuscarTrabajador.vue')
+},
+{
+  path: '/TecnicoVista/:id',
+  name: 'TecnicoVista',
+  component: () => import('../views/Trabajadores/TecnicoVista.vue')
+},
+{
+  path: '/ClienteVista/:id',
+  name: 'ClienteVista',
+  component: () => import('../views/Clientes/ClienteVista.vue')
+},
+{
+  path: '/IncidenciaVista/:id',
+  name: 'IncidenciaVista',
+  component: () => import('../views/Incidencias/IncidenciaVista.vue')
+},
+{
+  path: '/Administracion',
+  name: 'Administracion',
+  component: () => import('../views/Administracion.vue')
+} */
+
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(),
   routes
 })
 
