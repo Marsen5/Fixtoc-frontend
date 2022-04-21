@@ -1,12 +1,19 @@
 <template>
   <div class="mt-5 md:mt-0 md:col-span-2">
-    <form @submit.prevent="saveUsuario">
-      <input type="text" placeholder="Username" v-model="usuario.username" />
-      <input type="text" placeholder="Email" v-model="usuario.email" />
-      <input type="text" placeholder="Password" v-model="usuario.password" />
-      <button>Crear usuario</button>
+    <div class=" grid space-y-10 justify-center">
+    <form @submit.prevent="saveUsuario" class="space-y-5" >
+      <div>
+        <label for="email" class="label-text">Email</label><br>
+        <input type="text" placeholder="Email" class="input input-bordered w-full max-w-xs" v-model="usuario.email"/>
+      </div>
+      <div>
+        <label for="password">Password</label><br>
+        <input type="text" placeholder="Password" v-model="usuario.password" />
+      </div>
+      <button class="btn btn-primary">Crear usuario</button>
     </form>
-    <p>No tengo cuenta <router-link to="/">Iniciar Sesion</router-link></p>
+    <p>Ya tengo una cuenta<router-link to="/"> Iniciar Sesion</router-link></p>
+    </div>
   </div>
 </template>
 

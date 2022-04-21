@@ -1,12 +1,13 @@
 <template>
-  <div class="mt-5 md:mt-0 md:col-span-2">
-    <form @submit.prevent="saveUsuario">
-      <input type="text" placeholder="Username" v-model="usuario.username" />
+  <div data-theme="gestor">
+    <form @submit.prevent="saveUsuario" class=" grid space-y-3 
+    justify-center">
       <input type="text" placeholder="Email" v-model="usuario.email" />
       <input type="text" placeholder="Password" v-model="usuario.password" />
-      <button>Iniciar sesión</button>
+      <button class="btn btn-primary ">Iniciar sesión</button>
     </form>
     <p>No tengo cuenta <router-link to="/signup">Registrarse</router-link></p>
+    <router-link to="/mostarClientes">Mostrar Clientes</router-link>
   </div>
 </template>
 

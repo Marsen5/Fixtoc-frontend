@@ -4,7 +4,7 @@ import { AxiosResponse } from "axios"
 //Importamos la interfaz del objeto 
 import  { Usuario } from '@/interfaces/Usuario'
 
-//Funcion que nos permite crear un producto
+//Funcion que nos permite crear un usuario
 export const createUser = async (usuario: Usuario) => { //espera a que le pase un product de tipo Product(interfaz), despues devuelve lo siguiente:
   await axios.post('/auth/signup', usuario) //Añade /product a la url y le pasa el producto
 }
@@ -16,10 +16,10 @@ export const signinUser = async (usuario: Usuario) => { //espera a que le pase u
 
 //Funcion que nos permite listar los usuarios
 export const getUsuarios = async (): Promise<AxiosResponse<Usuario[]>> => 
-  await axios.get('/users') //Como utilizamos await tiene que ser una Promise para
+  await axios.get('/users') 
 
 //Funcion que muestra un usuario pasandole un id
-export const getUsuario = async (id: string): Promise<AxiosResponse<Usuario>> => 
+export const getUser= async (id: string): Promise<AxiosResponse<Usuario>> => 
   await axios.get('/users/' + id) //Le pasaremos el id del producto
 
 //Funcion para actualizar los usuarios

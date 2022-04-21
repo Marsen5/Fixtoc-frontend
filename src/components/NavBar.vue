@@ -1,13 +1,7 @@
 <template>
   <nav>
-    <ul>
-      <li>
         <router-link to="/">Indice</router-link>
-      </li>
-      <li>
-        <router-link to="/">Crear producto</router-link>
-      </li>
-    </ul>
+        <router-link to="/">Crear producto</router-link> 
   </nav>
 </template>
 

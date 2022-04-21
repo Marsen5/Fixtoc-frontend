@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
+//RouterRecordRaw es el tipo de ruta. Te obliga a poner nombre y componente
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -19,6 +20,16 @@ const routes: Array<RouteRecordRaw> = [
     name: 'SignUp',
     component: () => import('../components/SignupVue.vue')
   },
+  {
+    path: '/mostarClientes',
+    name: 'mostrarClientes',
+    component: () => import('../views/Clientes/mostrarClientes.vue')
+  },
+  {
+    path: '/detallesCliente/:id',
+    name: 'detallesCliente',
+    component: () => import('../views/Clientes/detallesCliente.vue')
+  }
   /* {
     path: '/buscarCliente',
     name: 'BuscarCliente',
