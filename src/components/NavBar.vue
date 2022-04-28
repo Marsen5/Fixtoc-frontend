@@ -1,7 +1,9 @@
 <template>
-  <nav>
-        <router-link to="/">Indice</router-link>
-        <router-link to="/">Crear producto</router-link> 
+  <nav class="bg-violet-400">
+   <!--Logo-->
+   
+   <router-link to="/">Indice</router-link>
+  <router-link to="/">Crear producto</router-link> 
   </nav>
 </template>
 

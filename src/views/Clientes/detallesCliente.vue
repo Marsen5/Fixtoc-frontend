@@ -1,19 +1,23 @@
 <template>
   <div>
-  <h1>Hola {{usuario.name}}</h1>
+  <h1>{{usuario.name}}</h1>
    <form @submit.prevent="handleUpdate()" class=" grid space-y-3 
     justify-center">
-    <h2>Nombre de usuario</h2>
-    <input type="text" v-model="usuario.username">
     <h2>Email</h2>
     <input type="text" v-model="usuario.email">
     <h2>Nombre</h2>
     <input type="text" v-model="usuario.name">
     <h2>Apellidos</h2>
-    <input type="text" v-model="usuario.subname">
-    <h2>Edad</h2>
-    <input type="text" v-model="usuario.age">
+    <input type="text" v-model="usuario.surname">
+    <h2>Incidencias</h2>
+    <input type="text" v-model="usuario.incidencias">
+    <h2>Role</h2>
+    <input type="text" v-model="usuario.roles">
+    <h2>Observaciones</h2>
+    <input type="text" v-model="usuario.observaciones">
+    
 
+  
     <button class="btn btn-primary">Actualizar</button>
     <button @click="handleDelete()" class="btn btn-error">Borrar</button>
     </form>
@@ -45,10 +49,8 @@ export default defineComponent({
       }
     },
     async handleDelete(){
-       if(typeof this.$route.params.id === "string"){
-        await deleteUser(this.$route.params.id)
-        this.$router.push({name: "mostarClientes"}) 
-      }
+        await deleteUser(this.usuario._id)
+        this.$router.push({name: "mostrarClientes"}) 
     }
   },
   mounted() { //Va a hacer una petición de lo que esta recibiendo

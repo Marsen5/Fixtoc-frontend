@@ -3,9 +3,10 @@ export interface Usuario {
   email: string;
   password: string;
   name: string;
-  subname: string;
-  age: number;
+  surname: string;
   imgURL: string;
   direction: string;
-  role: string;
+  roles: string;
+  observaciones: string;
+  incidencias: string;
 }

@@ -1,11 +1,11 @@
 <template>
   <ul>
     <li 
-      v-for="(usuario, index) in usuarios"
+      v-for="(factura, index) in facturas"
       :key="index"
-      @click="$router.push(`/detallesCliente/${usuario._id}`)"
+      @click="$router.push(`/detallesFactura/${factura._id}`)"
     > 
-      {{ usuario.name }}
+      {{ factura._id }}
     </li>
   </ul>
 </template>
@@ -13,19 +13,19 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { Usuario } from '@/interfaces/Usuario'
-import { getUsuarios } from '@/services/Usuario.api'
+import { Factura } from '@/interfaces/Factura'
+import { getFacturas} from '@/services/Factura.api'
 
 export default defineComponent({
   data() {
     return {
-    usuarios: [] as Usuario[] //Utilizando interfaces
+    facturas: [] as Factura[] //Utilizando interfaces
     }
   },
   methods: { 
       async loadUsers() {
-      const res = await getUsuarios() 
-      this.usuarios = res.data
+      const res = await getFacturas() 
+      this.facturas = res.data
       }
     },
     mounted() { //Espera a que cargue la pagina

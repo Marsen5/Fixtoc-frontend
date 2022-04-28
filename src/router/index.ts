@@ -29,6 +29,21 @@ const routes: Array<RouteRecordRaw> = [
     path: '/detallesCliente/:id',
     name: 'detallesCliente',
     component: () => import('../views/Clientes/detallesCliente.vue')
+  },
+  {
+    path: '/mostarFacturas',
+    name: 'mostrarFacturas',
+    component: () => import('../views/Facturas/mostrarFacturas.vue')
+  },
+  {
+    path: '/detallesFactura/:id',
+    name: 'detallesFactura',
+    component: () => import('../views/Facturas/detallesFacturas.vue')
+  },
+  {
+    path: '/nuevaIncidencia',
+    name: 'nuevaIncidencia',
+    component: () => import('../views/Incidencias/nuevaIncidencia.vue')
   }
   /* {
     path: '/buscarCliente',

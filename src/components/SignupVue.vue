@@ -1,18 +1,37 @@
 <template>
-  <div class="mt-5 md:mt-0 md:col-span-2">
-    <div class=" grid space-y-10 justify-center">
-    <form @submit.prevent="saveUsuario" class="space-y-5" >
-      <div>
-        <label for="email" class="label-text">Email</label><br>
-        <input type="text" placeholder="Email" class="input input-bordered w-full max-w-xs" v-model="usuario.email"/>
+  <div class="min-h-screen bg-gray-100 flex flex-col justify-center sm:py-12">
+    <div class="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">
+    <div class="grid space-y-2 justify-center px-5 py-6 bg-white shadow w-full rounded-lg divide-y divide-gray-200 ">
+    <form @submit.prevent="saveUsuario" class="space-y-3" >
+      <h1 class="text-euclid-32 font-semibold">Registro</h1>
+      <!--Nombre y apellidos-->
+      <div class="columns-2">
+        <div class="grid space-y-0.5">
+          <label class="font-semibold">Nombre</label>
+          <input type="text" v-model="usuario.name" class="p-0.5 border border-gray-500 rounded-[0.5rem]" />
+        </div>
+        <div class="grid space-y-0.5">
+          <label class="font-semibold">Apellidos</label>
+          <input type="text" v-model="usuario.surname" class="p-0.5 border border-gray-500 rounded-[0.5rem]" />
+        </div>
       </div>
-      <div>
-        <label for="password">Password</label><br>
-        <input type="text" placeholder="Password" v-model="usuario.password" />
+      <!--Email-->
+      <div class="grid space-y-0.5">
+        <label class=" font-semibold">Email</label>
+        <input type="email" v-model="usuario.email" class="p-0.5 border border-gray-500 rounded-[0.5rem]" />
       </div>
-      <button class="btn btn-primary">Crear usuario</button>
+      <!--Passwd-->
+      <div class="grid space-y-0.5">
+        <label class="font-semibold">Password</label>
+        <input type="password" v-model="usuario.password" class="p-0.5 border border-gray-500 rounded-[0.5rem]"/>
+      </div>
+      <!--Botones-->
+        <div class="grid space-y-1">
+        <button class="btn btn-primary">Crear usuario</button>
+        <p>¿Ya tienes una cuenta?<router-link to="/" class="text-blue-500"> Iniciar Sesion</router-link></p>
+      </div>
     </form>
-    <p>Ya tengo una cuenta<router-link to="/"> Iniciar Sesion</router-link></p>
+    </div>
     </div>
   </div>
 </template>
