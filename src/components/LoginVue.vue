@@ -48,7 +48,7 @@ export default defineComponent({
       
       console.log(res)
       console.log("token     :     " + appStore.token)
-            console.log("role     :     " + appStore.role)
+      console.log("role     :     " + appStore.role)
 
       /** Para redireccionar al listado de productos un vez hayamos creado la tarea
        * name : "product" viene de: routes/index.ts name: "product"
