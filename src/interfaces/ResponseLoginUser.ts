@@ -1,4 +1,8 @@
+import {Usuario} from "../interfaces/Usuario";
+
 export interface ResponseLoginUser {
   token: string;
-  role: any;
+  role: string;
+  id: string;
+  user: Usuario;
 }

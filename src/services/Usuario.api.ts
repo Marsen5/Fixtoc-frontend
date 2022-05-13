@@ -17,16 +17,16 @@ export const signinUser = async (usuario: Usuario): Promise<ResponseLoginUser> =
 }
 
 //Funcion que nos permite listar los usuarios
-export const getUsuarios = async (): Promise<AxiosResponse<Usuario[]>> => 
+export const getUsuarios = async (): Promise<Usuario[]> => 
   await axios.get('/users') 
 
 //Funcion que muestra un usuario pasandole un id
-export const getUser= async (id: string): Promise<AxiosResponse<Usuario>> => 
+export const getUser= async (id: string): Promise<Usuario> => 
   await axios.get('/users/' + id) //Le pasaremos el id del producto
 
 //Funcion para actualizar los usuarios
-export const updateUser = async (id: string, product: Usuario) =>
-  await axios.put('/users/'+ id, product)
+export const updateUser = async (id: string, usuario: Usuario) =>
+  await axios.put('/users/'+ id, usuario)
 
 //Funcion para borrar usuario
 export const deleteUser = async (id: string): Promise<AxiosResponse<Usuario>> => 

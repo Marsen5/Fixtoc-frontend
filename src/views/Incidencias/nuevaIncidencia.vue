@@ -27,8 +27,8 @@
       <!--Fecha acabado-->
       <div class="grid space-y-0.5">
         <label class="font-semibold">Fecha de finalización aprox.</label>
-        <input type="date" v-model="incidencia.fechaAcabado" class="p-0.5 border border-gray-500 rounded-[0.5rem]"/>
-      </div>
+        <input type="date" v-model="incidencia.fechaPedido" class="p-0.5 border border-gray-500 rounded-[0.5rem]"/>
+    </div>
       <!--Boton-->
       <div class="grid space-y-1">
         <button class="btn btn-primary">Añadir Incidencia</button>
@@ -44,6 +44,10 @@
 import  { defineComponent } from 'vue'
 import { Incidencia } from '@/interfaces/Incidencia'
 import { createIncidencia } from '@/services/Incidencia.api'
+import { useAppStore } from '@/store/app'
+import { Usuario } from '@/interfaces/Usuario'
+
+const appStore = useAppStore();
 
 export default defineComponent({
   name: 'IncidenciaVue',
@@ -52,22 +56,31 @@ export default defineComponent({
   },
   data() {
     return {
-      incidencia: {} as Incidencia //Utilizando interfaces
+      incidencia: {} as Incidencia, //Utilizando interfaces
+      usuario: {} as Usuario
     }
   },
   methods: {
+    /* async loadUsuario(id: string) { 
+      const res = await getUser(id)
+      this.usuario = res
+      console.log("Res:"+res.email)
+    },
+     */
     async saveIncidencia() {
+      this.incidencia.id_usuario=appStore._id
+      console.log(this.incidencia.id_usuario)
       const res = await createIncidencia(this.incidencia) 
-      console.log(res)
-      /** Para redireccionar al listado de productos un vez hayamos creado la tarea
-       * name : "product" viene de: routes/index.ts name: "product"
-       */
       this.$router.push({name: "home"}) 
-    } 
+    }
     
     /* saveProduct() {
       console.log(this.product)
     } */
+  },
+  mounted() { 
+    /* this.loadUsuario(appStore._id);
+    console.log(this.usuario) */
   }
 })
 </script>

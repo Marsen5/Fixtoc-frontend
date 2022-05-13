@@ -44,7 +44,18 @@ const routes: Array<RouteRecordRaw> = [
     path: '/nuevaIncidencia',
     name: 'nuevaIncidencia',
     component: () => import('../views/Incidencias/nuevaIncidencia.vue')
-  }
+  },
+  {
+    path: '/mostrarIncidencias',
+    name: 'mostrarIncidencias',
+    component: () => import('../views/Incidencias/mostrarIncidencias.vue')
+  },
+  {
+    path: '/mostrarIncidenciasCliente/:id',
+    name: 'mostrarIncidenciasCliente',
+    component: () => import('../views/Incidencias/incidenciasCliente.vue')
+  },
+
   /* {
     path: '/buscarCliente',
     name: 'BuscarCliente',

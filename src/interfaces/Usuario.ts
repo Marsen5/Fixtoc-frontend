@@ -1,12 +1,14 @@
+
+
 export interface Usuario {
   _id: string;
   email: string;
   password: string;
-  name: string;
-  surname: string;
+  nombre: string;
+  apellido: string;
   imgURL: string;
   direction: string;
-  roles: string;
+  role: string;
   observaciones: string;
-  incidencias: string;
+  telefono: string;
 }

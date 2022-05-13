@@ -1,31 +1,26 @@
-import router from "@/router";
-import {Usuario} from "../interfaces/Usuario";
 import { defineStore } from "pinia";
 
-export const useAppStore = defineStore('app', {
+export const useAppStore = defineStore('user', {
     state: () => ({
-        token: "",
-        role: "",
         _id: "",
-        user: {} as Usuario,
     }),
-
+/* 
     getters: {
         isAuthenticated: (state) => {
             return state.token.trim().length > 0;
         },
         isAdmin: (state) => {
-            if (state.role === "ADMIN") {
+            if (state.role === "admin") {
                 return true;
             }
         },
         isTecnico: (state) => {
-            if (state.role === "TECNICO") {
+            if (state.role === "tecnico") {
                 return true;
             }
         },
         isUser: (state) => {
-            if (state.role === "USER") {
+            if (state.role === "user") {
                 return true;
             }
         }
@@ -37,7 +32,7 @@ export const useAppStore = defineStore('app', {
             router.replace({ name: 'login' });
         }
     },
-
+ */
     persist: {
         enabled: true
     }

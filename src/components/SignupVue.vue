@@ -3,16 +3,16 @@
     <div class="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">
     <div class="grid space-y-2 justify-center px-5 py-6 bg-white shadow w-full rounded-lg divide-y divide-gray-200 ">
     <form @submit.prevent="saveUsuario" class="space-y-3" >
-      <h1 class="text-euclid-32 font-semibold">Registro</h1>
+      <h1 class="text-euclid-32 font-semibold">Nuevo Usuario</h1>
       <!--Nombre y apellidos-->
       <div class="columns-2">
         <div class="grid space-y-0.5">
           <label class="font-semibold">Nombre</label>
-          <input type="text" v-model="usuario.name" class="p-0.5 border border-gray-500 rounded-[0.5rem]" />
+          <input type="text" v-model="usuario.nombre" class="p-0.5 border border-gray-500 rounded-[0.5rem]" />
         </div>
         <div class="grid space-y-0.5">
           <label class="font-semibold">Apellidos</label>
-          <input type="text" v-model="usuario.surname" class="p-0.5 border border-gray-500 rounded-[0.5rem]" />
+          <input type="text" v-model="usuario.apellido" class="p-0.5 border border-gray-500 rounded-[0.5rem]" />
         </div>
       </div>
       <!--Email-->
@@ -42,7 +42,7 @@ import { Usuario } from '../interfaces/Usuario'
 import { createUser } from '../services/Usuario.api'
 
 export default defineComponent({
-  name: 'LoginVue',
+  name: 'SignupVue',
   props: {
     msg: String,
   },

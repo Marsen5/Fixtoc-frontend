@@ -1,3 +1,5 @@
+import {Usuario} from './Usuario';
+
 export interface Incidencia {
   _id: string;
   titulo: string;
@@ -5,8 +7,9 @@ export interface Incidencia {
   producto: string;
   coste: number;
   estado: string;
-  fechaEntregado: Date;
-  fechaAcabado: Date;
-  tecnico: string;
-  cliente: string;
+  fechaPedido: Date;
+  id_tecnico: string;
+  id_usuario: string;
+  horas_reparacion: number;
+  material: string;
 }
