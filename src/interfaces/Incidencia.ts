@@ -8,8 +8,8 @@ export interface Incidencia {
   coste: number;
   estado: string;
   fechaPedido: Date;
-  id_tecnico: string;
-  id_usuario: string;
+  id_tecnico: any;
+  id_usuario: any;
   horas_reparacion: number;
   material: string;
 }

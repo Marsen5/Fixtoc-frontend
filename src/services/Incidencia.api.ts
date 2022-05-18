@@ -16,3 +16,12 @@ export const getIncidencias = async (): Promise<Incidencia[]> =>
 //Funcion que nos permite listar las incidencias de un usuario
 export const getIncidenciasUsuario = async (id: string): Promise<Incidencia[]> => 
   await axios.get('/incidencia/usuario/'+id)
+
+//Funcion para actualizar estado
+export const updateEstado = async (id: string, incidencia:Incidencia) =>
+  await axios.put('/incidencia/estado/'+ id, incidencia)
+
+//Funcion para actualizar toda la incidencia
+export const updateIncidencia = async (id: string, incidencia:Incidencia) =>
+  await axios.put('/incidencia/'+ id, incidencia)
+

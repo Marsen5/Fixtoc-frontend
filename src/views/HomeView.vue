@@ -13,8 +13,11 @@
   <div v-if="isAdmin">
     <router-link to="/mostrarIncidencias" class="text-blue-500">Ver incidencias</router-link>
   </div>
-    <div v-if="isUser">
+  <div v-if="isUser">
     <router-link to="/mostrarIncidenciasCliente/:id" class="text-blue-500">Ver incidencias</router-link>
+  </div>
+  <div v-if="isUser">
+    <router-link to="/modificarPerfil" class="text-blue-500">Mi perfil</router-link>
   </div>
 </template>
 

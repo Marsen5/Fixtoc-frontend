@@ -55,6 +55,11 @@ const routes: Array<RouteRecordRaw> = [
     name: 'mostrarIncidenciasCliente',
     component: () => import('../views/Incidencias/incidenciasCliente.vue')
   },
+  {
+    path: '/modificarPerfil',
+    name: 'modificarPerfil',
+    component: () => import('../views/Clientes/perfilCliente.vue')
+  },
 
   /* {
     path: '/buscarCliente',
