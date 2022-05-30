@@ -9,6 +9,7 @@
       <th>Ref-usuario</th>
       <th>Fecha pedido</th>
       <th>Estado</th>
+      <th>Tecnico</th>
     </thead>
     <tbody>
       <tr v-for="(incidencia, index) in incidencias"
@@ -29,8 +30,10 @@
               <option value="ENTREGADO">Entregado</option>
             </select>
         </td>
-        <td v-for="(tecnico, index) in tecnicos" :key="index">
-          
+        <td>
+           <select v-model="incidencia.id_tecnico" v-for="(tecnico, index) in tecnicos" :key="index">
+              <option> {{tecnico.nombre}}</option>
+            </select>
         </td>
         
       </tr>
@@ -44,7 +47,9 @@
 import { defineComponent } from 'vue'
 import { Incidencia} from '@/interfaces/Incidencia'
 import { getIncidencias, updateEstado, updateIncidencia} from '@/services/Incidencia.api'
+import {getTecnicos} from '@/services/Tecnico.api'
 import { Tecnico } from '@/interfaces/Tecnico'
+
 
 export default defineComponent({
   data() {
@@ -70,9 +75,14 @@ export default defineComponent({
         console.log(id, incidencia)
         this.loadIncidencias()
       },
+      //Mostrar tecnicos
+      async loadTecnicos() {
+        this.tecnicos = await getTecnicos()
+      }
     },
     mounted() { //Espera a que cargue la pagina
       this.loadIncidencias()
+      this.loadTecnicos()
     },    
 })
 </script>

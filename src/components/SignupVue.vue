@@ -41,6 +41,7 @@ import  { defineComponent } from 'vue'
 import { Usuario } from '../interfaces/Usuario'
 import { createUser } from '../services/Usuario.api'
 
+
 export default defineComponent({
   name: 'SignupVue',
   props: {
@@ -55,15 +56,8 @@ export default defineComponent({
     async saveUsuario() {
       const res = await createUser(this.usuario) 
       console.log(res)
-      /** Para redireccionar al listado de productos un vez hayamos creado la tarea
-       * name : "product" viene de: routes/index.ts name: "product"
-       */
-      this.$router.push({name: "home"}) 
-    } 
-    
-    /* saveProduct() {
-      console.log(this.product)
-    } */
-  }
+      this.$router.push({name: "login"})
+      }
+    }
 })
 </script>
