@@ -10,10 +10,11 @@
       <th>Fecha pedido</th>
       <th>Estado</th>
       <th>Tecnico</th>
+      <th>Tecnico</th>
     </thead>
     <tbody>
       <tr v-for="(incidencia, index) in incidencias"
-      :key="index" @click="handleUpdate(incidencia._id,incidencia)" >
+      :key="index">
         <td>{{incidencia._id}}</td> 
         <td><input type="text" v-model="incidencia.titulo"></td> 
         <td><input type="text" v-model="incidencia.descripcion"></td>
@@ -31,11 +32,13 @@
             </select>
         </td>
         <td>
-           <select v-model="incidencia.id_tecnico" v-for="(tecnico, index) in tecnicos" :key="index">
-              <option> {{tecnico.nombre}}</option>
-            </select>
+          <button><router-link to="/signup" class="text-blue-500">Asignar técnico</router-link></button>
         </td>
-        
+        <td>
+          <select v-model="incidencia.id_tecnico">
+          <option v-for="(tecnico, index) in tecnicos" :key="index" :value="tecnico._id" @click="asignarTecnico(incidencia._id, tecnico._id)">{{tecnico.nombre}}</option>
+          </select>
+        </td>
       </tr>
     </tbody>
   </table>
@@ -46,9 +49,10 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { Incidencia} from '@/interfaces/Incidencia'
-import { getIncidencias, updateEstado, updateIncidencia} from '@/services/Incidencia.api'
+import { getIncidencias, updateEstado, updateIncidencia, asignarTecnico } from '@/services/Incidencia.api'
 import {getTecnicos} from '@/services/Tecnico.api'
 import { Tecnico } from '@/interfaces/Tecnico'
+
 
 
 export default defineComponent({
@@ -72,13 +76,19 @@ export default defineComponent({
       //Actualizar incidencia
       async handleUpdateIncidencia(id: string, incidencia :Incidencia) {
         await updateIncidencia(id, incidencia)
-        console.log(id, incidencia)
+        console.log()
         this.loadIncidencias()
       },
       //Mostrar tecnicos
       async loadTecnicos() {
         this.tecnicos = await getTecnicos()
-      }
+      },
+      //Asignat tecnico
+      async asignarTecnico(id: string, id_tecnico :string) {
+        await asignarTecnico(id, id_tecnico)
+        console.log(id, id_tecnico)
+        this.loadIncidencias()
+      },
     },
     mounted() { //Espera a que cargue la pagina
       this.loadIncidencias()

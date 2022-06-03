@@ -19,6 +19,9 @@
   <div v-if="isUser">
     <router-link to="/modificarPerfil" class="text-blue-500">Mi perfil</router-link>
   </div>
+  <div v-if="isAdmin">
+    <router-link to="/adminTecnicos" class="text-blue-500">Administrar técnicos</router-link>
+  </div>
 </template>
 
 <script lang="ts">

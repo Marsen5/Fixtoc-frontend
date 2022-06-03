@@ -22,7 +22,7 @@ export default defineComponent({
 <header>
   <NavBar v-if="isAuthenticated"/>
 </header>
-  <router-view />
+  <router-view/>
 </template>
 
 

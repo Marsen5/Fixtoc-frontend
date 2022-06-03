@@ -15,7 +15,13 @@
         <td><input type="text" v-model="usuario.nombre"></td> 
         <td><input type="text" v-model="usuario.apellido"></td>
         <td><input type="text" v-model="usuario.email"></td>
-        <td><input type="text" v-model="usuario.role"></td> 
+        <td>
+            <select v-model="usuario.role" @click="handleUpdate(usuario._id)">
+              <option value="USER">Cliente</option>
+              <option value="ADMIN">Administrador</option>
+              <option value="TECNICO">Tecnico</option>
+            </select>
+        </td>
         <td><button @click="handleUpdate(usuario._id)">Actualizar</button></td>
         <td><button @click="handleDelete(usuario._id)">Eliminar</button></td>
         <td><button @click="$router.push(`/detallesCliente/${usuario._id}`)">Ficha completa</button></td> 

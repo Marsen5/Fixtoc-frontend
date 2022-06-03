@@ -25,3 +25,6 @@ export const updateEstado = async (id: string, incidencia:Incidencia) =>
 export const updateIncidencia = async (id: string, incidencia:Incidencia) =>
   await axios.put('/incidencia/'+ id, incidencia)
 
+//Funcion para asignar un tecnico a la incidencia
+export const asignarTecnico = async (id_tecnico: string, id_incidencia: string) =>
+await axios.put('/incidencia/tecnico/'+id_incidencia, id_tecnico)

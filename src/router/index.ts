@@ -60,6 +60,16 @@ const routes: Array<RouteRecordRaw> = [
     name: 'modificarPerfil',
     component: () => import('../views/Clientes/perfilCliente.vue')
   },
+  {
+    path: '/adminTecnicos',
+    name: 'adminTecnicos',
+    component: () => import('../views/Tecnicos/administrarTecnicos.vue')
+  },
+  {
+    path: '/nuevoTecnico',
+    name: 'nuevoTecnico',
+    component: () => import('../views/Tecnicos/nuevoTecnico.vue')
+  },
 
   /* {
     path: '/buscarCliente',

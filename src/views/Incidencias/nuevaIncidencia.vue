@@ -9,29 +9,19 @@
         <label class="font-semibold">Titulo</label>
         <input type="text" v-model="incidencia.titulo" class="p-0.5 border border-gray-500 rounded-[0.5rem]" />
       </div>
-      <!--Descripcion-->
-      <div class="grid space-y-0.5">
-        <label class="font-semibold">Descripcion</label>
-        <textarea type="text" v-model="incidencia.descripcion" class="p-0.5 border border-gray-500 rounded-[0.5rem]" />
-      </div>
       <!--Producto-->
       <div class="grid space-y-0.5">
         <label class="font-semibold">Producto</label>
         <input type="text" v-model="incidencia.producto" class="p-0.5 border border-gray-500 rounded-[0.5rem]" />
       </div>
-      <!--Coste-->
+      <!--Descripcion-->
       <div class="grid space-y-0.5">
-        <label class=" font-semibold">Coste</label>
-        <input type="number" v-model="incidencia.coste" class="p-0.5 border border-gray-500 rounded-[0.5rem]" />
+        <label class="font-semibold">Descripcion avería</label>
+        <textarea type="text" v-model="incidencia.descripcion" class="p-0.5 border border-gray-500 rounded-[0.5rem]" />
       </div>
-      <!--Fecha acabado-->
-      <div class="grid space-y-0.5">
-        <label class="font-semibold">Fecha de finalización aprox.</label>
-        <input type="date" v-model="incidencia.fechaPedido" class="p-0.5 border border-gray-500 rounded-[0.5rem]"/>
-    </div>
       <!--Boton-->
       <div class="grid space-y-1">
-        <button class="btn btn-primary">Añadir Incidencia</button>
+        <button class="btn btn-primary">Generar incidencia</button>
       </div>
     </form>
     </div>
@@ -70,7 +60,7 @@ export default defineComponent({
     async saveIncidencia() {
       this.incidencia.id_usuario=appStore._id
       console.log(this.incidencia.id_usuario)
-      const res = await createIncidencia(this.incidencia) 
+      const res = await createIncidencia(this.incidencia)
       this.$router.push({name: "home"}) 
     }
     
