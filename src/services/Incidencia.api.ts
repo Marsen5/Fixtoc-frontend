@@ -9,6 +9,9 @@ export const createIncidencia = async (incidencia: Incidencia) => { //espera a q
   await axios.post('/incidencia', incidencia) //Añade /product a la url y le pasa el producto
 }
 
+export const getIncidencia = async (id: string): Promise<Incidencia> =>
+  await axios.get('/incidencia/' + id) 
+
 //Funcion que nos permite listar las incidencias
 export const getIncidencias = async (): Promise<Incidencia[]> => 
   await axios.get('/incidencia')

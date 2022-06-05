@@ -7,5 +7,4 @@ export interface Factura{
   total: number;
   id_usuario: any;
   id_incidencia: any;
-
 }

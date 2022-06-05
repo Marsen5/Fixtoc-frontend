@@ -3,19 +3,21 @@ import { AxiosResponse } from "axios"
 
 //Importamos la interfaz del objeto 
 import  { Factura } from '@/interfaces/Factura'
+import { ResponseCreateFactura } from "@/interfaces/ResponseCreateFactura"
 
 //Funcion que nos permite crear un usuario
-export const createFactura = async (factura: Factura) => { //espera a que le pase un product de tipo Product(interfaz), despues devuelve lo siguiente:
-  await axios.post('/factura', factura) //Añade /product a la url y le pasa el producto
+export const createFactura = async (factura: Factura): Promise<ResponseCreateFactura> => { //espera a que le pase un product de tipo Product(interfaz), despues devuelve lo siguiente:
+  return await axios.post<any, ResponseCreateFactura>('/factura', factura) 
+  .catch(() => ({} as ResponseCreateFactura))
 }
 
 //Funcion que nos permite listar los usuarios
 export const getFacturas = async (): Promise<AxiosResponse<Factura[]>> => 
-  await axios.get('/facturas')
+  await axios.get('/factura')
 
 //Funcion que muestra un usuario pasandole un id
-export const getFactura= async (id: string): Promise<AxiosResponse<Factura>> => 
-  await axios.get('/facturas/' + id) //Le pasaremos el id del producto
+export const getFactura= async (id: string): Promise<Factura> => 
+  await axios.get('/factura/' + id) //Le pasaremos el id del producto
 
 //Funcion para actualizar los usuarios
 export const updateFactura = async (id: string, factura: Factura) =>

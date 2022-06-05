@@ -3,9 +3,11 @@
     <li 
       v-for="(incidencia, index) in incidencias"
       :key="index" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-euclid-14"
-      @click="generarFactura(incidencia._id)">
+      >
     > 
       {{ incidencia._id }}
+       <button  @click="generarFactura(incidencia._id)" class="btn-primary">Generar Factura</button>
+      
     </li>
   </ul>
 </template>
@@ -19,6 +21,7 @@ import { getIncidenciasUsuario } from '@/services/Incidencia.api'
 import { createFactura } from '@/services/Factura.api'
 
 import { useAppStore } from '@/store/app'
+import router from '@/router'
 
 const appStore = useAppStore();
 
@@ -32,18 +35,17 @@ export default defineComponent({
   methods: { 
       async loadIncidencias() {
       const id_usuario = appStore._id
-      this.incidencias = await getIncidenciasUsuario(id_usuario) 
+      this.incidencias = await getIncidenciasUsuario(id_usuario)
       },
-      async generarFactura(id : string) {
-        console.log(appStore._id)
+      async generarFactura(id_incidencia : string) {
         this.factura.id_usuario = appStore._id
-        console.log(this.factura.id_usuario)
-        this.factura.id_incidencia= id
-        console.log(this.factura.id_incidencia)
-        await createFactura(this.factura)
+        this.factura.id_incidencia= id_incidencia
+        const res = await createFactura(this.factura)
         
-        console.log("thisf    "+ this.factura)
-      }
+        appStore.id_factura = res.id
+        console.log(appStore.id_factura)
+        router.push('/detallesFactura/'+appStore.id_factura)
+      },
       
     },
     mounted() { //Espera a que cargue la pagina

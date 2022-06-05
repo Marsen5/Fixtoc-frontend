@@ -8,6 +8,7 @@ export const useAppStore = defineStore('app', {
         role: "",
         _id: "",
         user: {} as Usuario,
+        id_factura: "",
     }),
 
     getters: {

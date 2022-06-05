@@ -1,0 +1,117 @@
+async crearPDF( factura : Factura) {
+      /* const doc = new jsPDF();
+      doc.text('Hola mundo', 10, 10);
+      doc.save('a4.pdf'); */
+    let props = {
+    outputType:' OutputType.Save',
+    returnJsPDFDocObject: true,
+    fileName: "Factura " + factura._id,
+    orientationLandscape: false,
+    compress: true,
+    logo: {
+        src: "@/src/components/Logo.png",
+        type: 'PNG', //optional, when src= data:uri (nodejs case)
+        width: 53.33, //aspect ratio = width/height
+        height: 26.66,
+        margin: {
+            top: 0, //negative or positive num, from the current position
+            left: 0 //negative or positive num, from the current position
+        }
+    },
+    stamp: {
+        inAllPages: true, //by default = false, just in the last page
+        src: "@/src/components/Logo.png",
+        type: 'PNG', //optional, when src= data:uri (nodejs case)
+        width: 30, //aspect ratio = width/height
+        height: 20,
+        margin: {
+            top: 0, //negative or positive num, from the current position
+            left: 0 //negative or positive num, from the current position
+        }
+    },
+    business: {
+        name: "Fixtoc",
+        address: "Passeig Marítim, 5, 12580 Benicarló, Castelló",
+        phone: "964 40 56 40",
+        email: "info@fixtoc.com",
+        website: "www.fixtoc.com",
+    },
+    contact: {
+        label: "Factura del Cliente: ",
+        name: String(factura._id) + ", " + String(factura._id),
+        address: String(factura._id),
+        phone: String(factura._id),
+        email: String(factura._id),
+    },
+    invoice: {
+        label: "Factura Nº: ",
+        num: Number(factura._id),
+        invDate: "Factura " + String(factura._id),
+        headerBorder: false,
+        tableBodyBorder: false,
+        header: [
+          {
+            title: "Nº", 
+            style: { 
+              width: 10 
+            } 
+          }, 
+          { 
+            title: "Incidencia",
+            style: {
+              width: 40
+            } 
+          }, 
+          { 
+            title: "Observaciones",
+            style: {
+              width: 40
+            } 
+          }, 
+          { title: "Horas",},
+          { title: "h/€"},
+          { title: "Material"},
+          { title: "Precio"}
+        ],
+        table: Array.from(Array(1), (item, index)=>([
+            Number(factura.total),
+            Number(factura.total),
+            String(factura._id) + ", " + String(factura._id),
+            Number(factura.total),
+            Number(factura.total),
+            String(factura._id),
+            Number(factura.total)
+        ])),
+        additionalRows: [{
+            col1: 'Total:',
+            col2: String(factura.total),
+            col3: '€',
+            style: {
+                fontSize: 14 //optional, default 12
+            }
+        },
+        {
+            col1: 'IVA:',
+            col2: String(factura._id),
+            col3: '%',
+            style: {
+                fontSize: 10 //optional, default 12
+            }
+        },
+        {
+            col1: 'SubTotal:',
+            col2: String(factura.subtotal),
+            col3: '€',
+            style: {
+                fontSize: 10 //optional, default 12
+            }
+        }],
+        },
+    footer: {
+        text: "Factura generada automaticamente",
+    },
+    pageEnable: true,
+    pageLabel: "Pagina ",
+    } 
+    return props;
+  },

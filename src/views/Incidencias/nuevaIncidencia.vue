@@ -47,7 +47,7 @@ export default defineComponent({
   data() {
     return {
       incidencia: {} as Incidencia, //Utilizando interfaces
-      usuario: {} as Usuario
+      usuario: {} as Usuario,
     }
   },
   methods: {

@@ -31,14 +31,9 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('../views/Clientes/detallesCliente.vue')
   },
   {
-    path: '/mostarFacturas',
-    name: 'mostrarFacturas',
-    component: () => import('../views/Facturas/mostrarFacturas.vue')
-  },
-  {
     path: '/detallesFactura/:id',
     name: 'detallesFactura',
-    component: () => import('../views/Facturas/detallesFacturas.vue')
+    component: () => import('../views/Facturas/detallesFactura.vue')
   },
   {
     path: '/nuevaIncidencia',
@@ -81,7 +76,7 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('../views/Tecnicos/incidenciasTecnico.vue')
   },
   {
-    path: '/mostrarFacturas',
+    path: '/mostrarFacturas/:id',
     name: 'mostrarFacturas',
     component: () => import('../views/Facturas/mostrarFacturas.vue')
   },

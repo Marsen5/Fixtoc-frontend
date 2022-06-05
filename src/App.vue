@@ -5,6 +5,7 @@ import { useAppStore } from './store/app';
 import { storeToRefs } from 'pinia';
 
 
+
 export default defineComponent({
   setup(){
     const { isAuthenticated } = storeToRefs(useAppStore());

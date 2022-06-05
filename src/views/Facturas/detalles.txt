@@ -1,0 +1,62 @@
+<template>
+  <div>
+  Factura creada con exito.
+  {{factura.id_usuario}}
+  <button @click="descargarPDF(factura)">Generar pdf</button>
+  {{props}}
+  </div>
+</template>
+
+<script lang="ts">
+import { Factura } from "@/interfaces/Factura";
+import { Incidencia } from "@/interfaces/Incidencia";
+import { getFactura } from "@/services/Factura.api";
+import { defineComponent } from "@vue/runtime-core";
+import jsPDFInvoiceTemplate, { OutputType, jsPDF } from "jspdf-invoice-template-nodejs";
+
+
+
+export default defineComponent({
+  data() {
+    return {
+      factura: {} as Factura,
+      incidencia: {} as Incidencia,
+      props: {} as any,
+      
+    }
+  },
+  methods: {
+    //Las funciones estan en services/ProductService 
+    async loadFactura(id: string) {
+      this.factura = await getFactura(id)
+    },
+
+    async descargarPDF(factura: Factura) {
+      const props = await this.crearPDF(factura)
+      console.log(props)
+      const pdfObject: any = jsPDFInvoiceTemplate(props);
+      pdfObject.Save();
+    },
+    async crearPDF(factura: Factura) {
+
+var props = {
+    outputType: OutputType.Save,
+    returnJsPDFDocObject: true,
+    fileName: "Factura ",
+    orientationLandscape: false,
+    compress: true,
+}
+return props
+    },
+
+    
+  mounted() { //Va a hacer una petición de lo que esta recibiendo
+    if (typeof this.$route.params.id === "string" ) //Solo lo ejecutara si el dato es de tipo string - Esto la hacemos porque sino al pasar el id en getProduct se tiene que pasar un string si o si
+      this.loadFactura(this.$route.params.id)
+
+    
+
+  },
+  },
+})
+</script>
