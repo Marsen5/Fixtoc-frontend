@@ -6,7 +6,7 @@ import  { Factura } from '@/interfaces/Factura'
 
 //Funcion que nos permite crear un usuario
 export const createFactura = async (factura: Factura) => { //espera a que le pase un product de tipo Product(interfaz), despues devuelve lo siguiente:
-  await axios.post('/facturas', factura) //Añade /product a la url y le pasa el producto
+  await axios.post('/factura', factura) //Añade /product a la url y le pasa el producto
 }
 
 //Funcion que nos permite listar los usuarios

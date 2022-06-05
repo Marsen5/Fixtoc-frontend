@@ -13,7 +13,8 @@
     "pinia": "^2.0.13",
     "pinia-plugin-persist": "^1.0.0",
     "vue": "^3.2.13",
-    "vue-router": "^4.0.3"
+    "vue-router": "^4.0.3",
+    "vuetify-upload-button": "^2.0.2"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.4.0",

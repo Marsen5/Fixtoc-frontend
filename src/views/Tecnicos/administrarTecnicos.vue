@@ -16,7 +16,7 @@
         <td><input type="text" v-model="tecnico.email"></td>
         <td><button @click="handleUpdate(tecnico._id)">Actualizar</button></td>
         <td><button @click="handleDelete(tecnico._id)">Eliminar</button></td>
-        <td><button @click="$router.push(`/detallesCliente/${tecnico._id}`)">Ficha completa</button></td> 
+        <td><button @click="$router.push(`/detallesTecnico/${tecnico._id}`)">Ficha completa</button></td> 
       </tr>
     </tbody>
   </table>
@@ -37,10 +37,11 @@ export default defineComponent({
     tecnicos: [] as Tecnico[], //Utilizando interfaces
     }
   },
+
   methods: { 
       async loadUsers() {
       this.tecnicos = await getTecnicos();
-    
+      this.tecnicos = this.tecnicos.filter(tecnico => tecnico.role === "TECNICO")
       console.log(this.tecnicos)
       },
 
@@ -58,10 +59,10 @@ export default defineComponent({
     
     },
 
-    
     mounted() { //Espera a que cargue la pagina
       this.loadUsers()
-    },    
+    }, 
+
 })
 
 </script>

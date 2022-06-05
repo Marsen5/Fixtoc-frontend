@@ -1,28 +1,29 @@
 <template>
-  <table class="mx-auto m-4 bg-green-400">
-    <thead>
-      <th>id</th>
-      <th>Título</th>
-      <th>Descripción</th>
-      <th>Coste</th>
-      <th>Producto</th>
-      <th>Ref-usuario</th>
-      <th>Fecha pedido</th>
-      <th>Estado</th>
-      <th>Tecnico</th>
-      <th>Tecnico</th>
+  <div class="relative overflow-x-auto shadow-md sm:rounded-lg m-5">
+  <table class=" table-auto w-full text-sm text-left text-gray-500 dark:text-gray-400">
+    <thead class="text-euclid-14 text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+      <th scope="col" class="px-1 py-1">id</th>
+      <th scope="col" class="px-1 py-1">Título</th>
+      <th scope="col" class="px-1 py-1">Coste</th>
+      <th scope="col" class="px-1 py-1">Producto</th>
+      <th scope="col" class="px-1 py-1">Usuario</th>
+      <th scope="col" class="px-1 py-1">Fecha pedido</th>
+      <th scope="col" class="px-1 py-1">Estado</th>
+      <th scope="col" class="px-1 py-1">Tecnico</th>
+      <th scope="col" class="px-1 py-1">
+        <span class="sr-only">Ficha completa</span>
+      </th>
     </thead>
     <tbody>
       <tr v-for="(incidencia, index) in incidencias"
-      :key="index">
-        <td>{{incidencia._id}}</td> 
-        <td><input type="text" v-model="incidencia.titulo"></td> 
-        <td><input type="text" v-model="incidencia.descripcion"></td>
-        <td><input type="text" v-model="incidencia.coste"></td>
-        <td><input type="text" v-model="incidencia.producto"></td>  
-        <td><input type="text" v-model="incidencia.id_usuario.nombre"></td>
-        <td><input type="text" v-model="incidencia.fechaPedido"></td> 
-        <td>
+      :key="index" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-euclid-14">
+        <td scope="row" class="px-1 py-1 font-medium text-gray-900 dark:text-white whitespace-nowrap">{{incidencia._id}}</td> 
+        <td class="px-1 py-1">{{incidencia.titulo}}</td> 
+        <td class="px-1 py-1">{{incidencia.coste}} €</td>
+        <td class="px-1 py-1">{{incidencia.producto}}</td>  
+        <td class="px-1 py-1">{{incidencia.id_usuario.nombre}}</td>
+        <td class="px-1 py-1">{{incidencia.fechaPedido}}</td> 
+        <td class="px-1 py-1">
             <select v-model="incidencia.estado" @click="handleUpdate(incidencia._id,incidencia)">
               <option value="PENDIENTE">Pendiente</option>
               <option value="EN_REPARACION">En Reparación</option>
@@ -31,18 +32,18 @@
               <option value="ENTREGADO">Entregado</option>
             </select>
         </td>
-        <td>
-          <button><router-link to="/signup" class="text-blue-500">Asignar técnico</router-link></button>
-        </td>
-        <td>
+        <td class="px-1 py-1">
           <select v-model="incidencia.id_tecnico">
-          <option v-for="(tecnico, index) in tecnicos" :key="index" :value="tecnico._id" @click="asignarTecnico(incidencia._id, tecnico._id)">{{tecnico.nombre}}</option>
+            <option v-for="(tecnico, index) in tecnicos" :key="index" :value="tecnico">{{tecnico.nombre}}</option>
           </select>
+        </td>
+          <td class="px-1 py-1">
+            <button @click="handleUpdateIncidencia(incidencia._id, incidencia)">Actualizar</button>
         </td>
       </tr>
     </tbody>
   </table>
-  
+  </div>
 </template>
 
 
@@ -65,7 +66,8 @@ export default defineComponent({
   },
   methods: { 
       async loadIncidencias() {
-      this.incidencias = await getIncidencias() 
+      this.incidencias = await getIncidencias()
+      this.incidencias = this.incidencias.filter(incidencia => incidencia.id_usuario != undefined)
       },
       //Cambio de estado
       async handleUpdate(id: string, incidencia :Incidencia) {
@@ -82,6 +84,7 @@ export default defineComponent({
       //Mostrar tecnicos
       async loadTecnicos() {
         this.tecnicos = await getTecnicos()
+        this.tecnicos = this.tecnicos.filter(tecnico => tecnico.role === 'TECNICO')
       },
       //Asignat tecnico
       async asignarTecnico(id: string, id_tecnico :string) {

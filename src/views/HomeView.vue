@@ -22,6 +22,9 @@
   <div v-if="isAdmin">
     <router-link to="/adminTecnicos" class="text-blue-500">Administrar técnicos</router-link>
   </div>
+  <div v-if="isUser">
+    <router-link to="/mostrarFacturas/:id" class="text-blue-500">Ver facturas</router-link>
+  </div>
 </template>
 
 <script lang="ts">

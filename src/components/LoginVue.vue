@@ -1,6 +1,11 @@
 <template>
-  <div class="grid grid-cols-1 laptop:grid-cols-3">
-    <form @submit.prevent="saveUsuario" class=" grid space-y-2 justify-center m-8">
+  <div class="grid grid-cols-1 laptop:grid-cols-3 bg-white" >
+    <!--Formulario Inicio sesión-->
+    <form @submit.prevent="saveUsuario" class=" grid space-y-2 justify-center mx-8 my-auto">
+    <!--LOGO-->
+      <i class="fa-solid fa-user"></i>
+      <img src="@/assets/Logo-violeta.svg" alt="logo" class="w-6">
+      <!--Titulo-->
       <h1 class="text-euclid-32 font-semibold">Accede a tu cuenta</h1>
       <div class="grid space-y-0.5">
         <label class=" font-semibold">Email</label>
@@ -15,8 +20,14 @@
         <p>¿No tienes cuenta? <router-link to="/signup" class="text-blue-500">Registrate</router-link></p>
       </div>
     </form>
-    
-    <div class="laptop:col-span-2 bg-violet-300">Aqui imagen</div>
+    <!--Explicación-->
+    <div class="laptop:col-span-2" >
+       <img src="@/assets/info-descripcion.jpg" alt="info">
+    </div>
+    <div class="laptop:col-span-1 bg-violet-600 m--1"></div>
+    <div class="laptop:col-span-2" >
+       <img src="@/assets/info_login3-02.jpg" alt="info">
+    </div>
   </div>
 </template>
 

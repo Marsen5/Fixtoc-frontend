@@ -70,6 +70,21 @@ const routes: Array<RouteRecordRaw> = [
     name: 'nuevoTecnico',
     component: () => import('../views/Tecnicos/nuevoTecnico.vue')
   },
+  {
+    path: '/detallesTecnico/:id',
+    name: 'detallesTecnico',
+    component: () => import('../views/Tecnicos/detallesTecnico.vue')
+  },
+  {
+    path: '/incidenciasTecnico/:id',
+    name: 'incidenciasTecnico',
+    component: () => import('../views/Tecnicos/incidenciasTecnico.vue')
+  },
+  {
+    path: '/mostrarFacturas',
+    name: 'mostrarFacturas',
+    component: () => import('../views/Facturas/mostrarFacturas.vue')
+  },
 
   /* {
     path: '/buscarCliente',

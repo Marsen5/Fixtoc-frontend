@@ -20,6 +20,11 @@
         <label class=" font-semibold">Email</label>
         <input type="email" v-model="tecnico.email" class="p-0.5 border border-gray-500 rounded-[0.5rem]" />
       </div>
+      <!--Telefono-->
+      <div class="grid space-y-0.5">
+        <label class=" font-semibold">Teléfono</label>
+        <input type="string" v-model="tecnico.telefono" class="p-0.5 border border-gray-500 rounded-[0.5rem]" />
+      </div>
       <!--Passwd-->
       <div class="grid space-y-0.5">
         <label class="font-semibold">Password</label>

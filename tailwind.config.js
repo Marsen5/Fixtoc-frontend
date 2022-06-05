@@ -22,6 +22,7 @@ module.exports = {
       fontSize: {
         'euclid-10': ['10px', '130%'],
         'euclid-12': ['12px', '130%'],
+        'euclid-14': ['14px', '130%'],
         'euclid-16': ['16px', '125%'],
         'euclid-20': ['20px', '115%'],
         'euclid-24': ['24px', '115%'],
