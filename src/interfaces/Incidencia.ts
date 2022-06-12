@@ -1,6 +1,4 @@
 import { Tecnico } from './Tecnico';
-import {Usuario} from './Usuario';
-
 export interface Incidencia {
   _id: string;
   titulo: string;

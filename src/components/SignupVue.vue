@@ -54,8 +54,9 @@ export default defineComponent({
   },
   methods: {
     async saveUsuario() {
-      const res = await createUser(this.usuario) 
-      console.log(res)
+      /* const res = await createUser(this.usuario)  */
+      await createUser(this.usuario) 
+/*       console.log(res) */
       this.$router.push({name: "login"})
       }
     }

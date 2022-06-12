@@ -60,11 +60,11 @@ export default defineComponent({
       appStore._id= res.id;
       appStore.user = res.user;
       
-      console.log(res)
+      /* console.log("res   :  " + res)
       console.log("token     :     " + appStore.token)
       console.log("role     :     " + appStore.role)
       console.log("id     :     " + appStore._id)
-      console.log("usuaerio     :     " + appStore.user.nombre)
+      console.log("usuaerio     :     " + appStore.user.nombre) */
 
 
       /** Para redireccionar al listado de productos un vez hayamos creado la tarea

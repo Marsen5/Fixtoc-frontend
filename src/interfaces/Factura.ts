@@ -1,5 +1,3 @@
-import { Incidencia } from "./Incidencia";
-import { Usuario } from "./Usuario";
 
 export interface Factura{
   _id: string;
