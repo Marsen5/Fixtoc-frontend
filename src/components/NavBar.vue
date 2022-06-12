@@ -2,7 +2,7 @@
   <nav class="bg-violet-400 flex ">
    <!--Logo-->
    <router-link to="/" class="p-2">
-    <img src="../assets/Logo.png" alt="logo" class="w-7">
+    <!-- <img src="../assets/Logo.png" alt="logo" class="w-7"> -->
    </router-link>
   <div class="fixed right-0 p-1.5">
     <router-link to="/" class="px-3 text-white">Sobre nosotros</router-link>
