@@ -8,7 +8,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "start": "node main",
+    "start": "node dist/main",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
