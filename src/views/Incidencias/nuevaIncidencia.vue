@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen bg-gray-100 flex flex-col justify-center sm:py-12">
     <div class="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">
-    <div class="grid space-y-2 justify-center px-5 py-6 bg-white shadow w-full rounded-lg divide-y divide-gray-200 ">
+    <div class="grid space-y-2 justify-center px-5 py-6 bg-white shadow w-full rounded-lg divide-y divide-gray-200 my-3 ">
     <form @submit.prevent="saveIncidencia" class="space-y-3" >
       <h1 class="text-euclid-32 font-semibold">Nueva incidencia</h1>
       <!--Titulo-->
@@ -36,6 +36,7 @@ import { Incidencia } from '@/interfaces/Incidencia'
 import { createIncidencia } from '@/services/Incidencia.api'
 import { useAppStore } from '@/store/app'
 import { Usuario } from '@/interfaces/Usuario'
+import router from '@/router'
 
 const appStore = useAppStore();
 
@@ -61,7 +62,9 @@ export default defineComponent({
       this.incidencia.id_usuario=appStore._id
       console.log(this.incidencia.id_usuario)
       const res = await createIncidencia(this.incidencia)
-      this.$router.push({name: "home"}) 
+      console.log("ID appStore: "+res.id)
+      appStore.id_incidencia = res.id
+      router.push('/generarpdfIncidencia/'+appStore.id_incidencia)
     }
     
     /* saveProduct() {

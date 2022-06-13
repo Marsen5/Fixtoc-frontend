@@ -1,29 +1,33 @@
 /* eslint-disable */
 <template>
-  <div class="text-euclid-20 font-bold mx-auto">¿Que deseas hacer?</div>
+  <div class="text-euclid-32 font-semibold m-5">¿Que deseas hacer?</div>
+  <div class="mx-5">
+  <div class="grid grid-cols-1 laptop:grid-cols-4 mx-auto gap-2">
   <div v-if="isAdmin">
-    <router-link to="/mostarClientes" class="text-blue-500">Ver clientes</router-link>
-  </div>
-  <div v-if="isAdmin">
-    <router-link to="/mostarFacturas" class="text-blue-500">Ver facturas</router-link>
+    <router-link to="/mostarClientes" class="btn btn-primary">Ver clientes</router-link>
   </div>
   <div v-if="isUser">
-    <router-link to="/nuevaIncidencia" class="text-blue-500">Nueva incidencia</router-link>
+    <router-link to="/nuevaIncidencia" class="btn btn-primary">Nueva incidencia</router-link>
   </div>
   <div v-if="isAdmin">
-    <router-link to="/mostrarIncidencias" class="text-blue-500">Ver incidencias</router-link>
+    <router-link to="/mostrarIncidencias" class="btn btn-primary">Ver incidencias</router-link>
   </div>
   <div v-if="isUser">
-    <router-link to="/mostrarIncidenciasCliente/:id" class="text-blue-500">Ver incidencias</router-link>
+    <router-link to="/mostrarIncidenciasCliente/:id" class="btn btn-primary">Ver incidencias</router-link>
   </div>
-  <div v-if="isUser">
-    <router-link to="/modificarPerfil" class="text-blue-500">Mi perfil</router-link>
+  <div v-if="isTecnico">
+    <router-link to="/mostrarIncidenciasTecnico/:id" class="btn btn-primary">Ver incidencias</router-link>
+  </div>
+  <div v-if="isUser || isTecnico">
+    <router-link to="/modificarPerfil" class="btn btn-primary">Mi perfil</router-link>
   </div>
   <div v-if="isAdmin">
-    <router-link to="/adminTecnicos" class="text-blue-500">Administrar técnicos</router-link>
+    <router-link to="/adminTecnicos" class="btn btn-primary">Administrar técnicos</router-link>
   </div>
   <div v-if="isUser">
-    <router-link to="/mostrarFacturas/:id" class="text-blue-500">Ver facturas</router-link>
+    <router-link to="/mostrarFacturas/:id" class="btn btn-primary">Ver facturas</router-link>
+  </div>
+  </div>
   </div>
 </template>
 
@@ -31,7 +35,6 @@
 import { defineComponent } from 'vue';
 import { useAppStore } from '@/store/app';
 import { storeToRefs } from 'pinia';
-
 
 export default defineComponent({
   setup(){

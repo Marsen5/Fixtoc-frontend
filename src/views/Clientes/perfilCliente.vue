@@ -1,27 +1,43 @@
 <template>
-   <div>
-  <h1>{{usuario.nombre}}</h1>
-   <form @submit.prevent="handleUpdate()" class=" grid space-y-3 
-    justify-center">
+  <div class="min-h-screen bg-gray-100 flex flex-col justify-center sm:py-12">
+   <div class="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">
+    <div class="grid space-y-2 justify-center px-5 py-6 bg-white shadow w-full rounded-lg divide-y divide-gray-200 my-3 ">
+
+   <form @submit.prevent="handleUpdate()" class=" space-y-2">
+    <h1 class="text-euclid-32 font-semibold">Hola {{usuario.nombre}}!</h1>
     <!-- Email -->
-    <h2>Email</h2>
-    <input type="text" v-model="usuario.email">
+    <div class="grid space-y-0.5">
+      <h2  class=" font-semibold">Email</h2>
+      <input type="text" v-model="usuario.email" class="border-b-2">
+    </div>
     <!-- Nombre -->
-    <h2>Nombre</h2>
-    <input type="text" v-model="usuario.nombre">
+    <div class="grid space-y-0.5">
+      <h2 class=" font-semibold">Nombre</h2>
+      <input type="text" v-model="usuario.nombre" class="border-b-2">
+    </div>
     <!-- Apellidos -->
-    <h2>Apellidos</h2>
-    <input type="text" v-model="usuario.apellido">
+    <div class="grid space-y-0.5">
+      <h2 class=" font-semibold">Apellidos</h2>
+      <input type="text" v-model="usuario.apellido" class="border-b-2">
+    </div>
     <!-- Direccion -->
-    <h2>Dirección</h2>
-    <input type="text" v-model="usuario.direccion"> 
+    <div class="grid space-y-0.5">
+      <h2 class=" font-semibold">Dirección</h2>
+      <input type="text" v-model="usuario.direccion" class="border-b-2"> 
+    </div>
     <!-- Telefono -->
-    <h2>Teléfono</h2>
-    <input type="text" v-model="usuario.telefono">
- 
+    <div class="grid space-y-0.5">
+      <h2 class=" font-semibold">Teléfono</h2>
+      <input type="text" v-model="usuario.telefono" class="border-b-2">
+    </div>
+
+    <div class="grid space-y-1">
     <button class="btn btn-primary">Actualizar</button>
-    <button @click="handleDelete()" class="btn btn-error">Borrar cuenta</button>
+    <button @click="handleDelete()" class="text-red-500">Borrar cuenta</button>
+    </div>
     </form>
+    </div>
+  </div>
   </div>
 </template>
 
@@ -49,12 +65,12 @@ export default defineComponent({
 
     async handleDelete() {
       await deleteUser(this.usuario._id)
-        this.$router.push({name: "login"}) 
+       this.$router.push({name: "home"}) 
     },
 
     async handleUpdate() {
       await updateUser(this.usuario._id, this.usuario)
-      this.loadUser();
+      this.$router.push({name: "home"}) 
     }
 
   },

@@ -9,6 +9,7 @@ export const useAppStore = defineStore('app', {
         _id: "",
         user: {} as Usuario,
         id_factura: "",
+        id_incidencia: "",
     }),
 
     getters: {

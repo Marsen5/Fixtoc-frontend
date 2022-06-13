@@ -1,25 +1,44 @@
 <template>
-  <div>
-  <h1>{{usuario.nombre}}</h1>
+  <div class="min-h-screen bg-gray-100 flex flex-col justify-center sm:py-12">
+   <div class="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">
+    <div class="grid space-y-2 justify-center px-5 py-6 bg-white shadow w-full rounded-lg divide-y divide-gray-200 my-3 ">
    <form @submit.prevent="handleUpdate()" class=" grid space-y-3 
     justify-center">
-    <h2>Email</h2>
-    <input type="text" v-model="usuario.email">
-    <h2>Nombre</h2>
-    <input type="text" v-model="usuario.nombre">
-    <h2>Apellidos</h2>
-    <input type="text" v-model="usuario.apellido">
-    <!-- <h2>Incidencias</h2>
-    <input type="text" v-model="usuario.incidencias"> -->
-  <!--   <h2>Role</h2>
-    <input type="text" v-model="usuario.roles">
-    <h2>Observaciones</h2>
-    <input type="text" v-model="usuario.observaciones"> -->
-    
-  
+    <h1 class="text-euclid-32 font-semibold">{{usuario.nombre}} {{usuario.apellido}}</h1>
+
+    <!-- Email -->
+    <div class="grid space-y-0.5">
+      <h2  class=" font-semibold">Email</h2>
+      <input type="text" v-model="usuario.email" class="border-b-2">
+    </div>
+    <!-- Nombre -->
+    <div class="grid space-y-0.5">
+      <h2 class=" font-semibold">Nombre</h2>
+      <input type="text" v-model="usuario.nombre" class="border-b-2">
+    </div>
+    <!-- Apellidos -->
+    <div class="grid space-y-0.5">
+      <h2 class=" font-semibold">Apellidos</h2>
+      <input type="text" v-model="usuario.apellido" class="border-b-2">
+    </div>
+    <!-- Direccion -->
+    <div class="grid space-y-0.5">
+      <h2 class=" font-semibold">Dirección</h2>
+      <input type="text" v-model="usuario.direccion" class="border-b-2"> 
+    </div>
+    <!-- Telefono -->
+    <div class="grid space-y-0.5">
+      <h2 class=" font-semibold">Teléfono</h2>
+      <input type="text" v-model="usuario.telefono" class="border-b-2">
+    </div>
+
+    <div class="grid space-y-1">
     <button class="btn btn-primary">Actualizar</button>
-    <button @click="handleDelete()" class="btn btn-error">Borrar</button>
+    <button @click="handleDelete()" class="text-red-500">Borrar cuenta</button>
+    </div>
     </form>
+    </div>
+  </div>
   </div>
 </template>
 
@@ -43,14 +62,12 @@ export default defineComponent({
       /* console.log("Res:"+res.data) */
     },
     async handleUpdate() { //La funcion viene de updateProduct / services/ProductServices
-      if(typeof this.$route.params._id === "string"){
-      await updateUser(this.$route.params._id, this.usuario)
-      this.$router.push({name: "product"})
-      }
+      await updateUser(this.usuario._id, this.usuario)
+      this.$router.push({name: "home"})
     },
     async handleDelete(){
         await deleteUser(this.usuario._id)
-        this.$router.push({name: "mostrarClientes"}) 
+        this.$router.push({name: "home"}) 
     }
   },
   mounted() { //Va a hacer una petición de lo que esta recibiendo

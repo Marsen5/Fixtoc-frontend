@@ -4,7 +4,8 @@ import { useAppStore } from "@/store/app";
 //Axiosinstance : interfaz de tipo Axios. Nos ayuda con errores i autocopletado
 
 const axiosInstance: AxiosInstance = axios.create({
-  baseURL: 'https://heroku-fixtoc.herokuapp.com/api', //Para decirle donde tiene que hacer la peticion
+  baseURL: 'http://localhost:3000/api',
+  /* baseURL: 'https://heroku-fixtoc.herokuapp.com/api', */ //Para decirle donde tiene que hacer la peticion
   headers: {
     'Content-Type': 'application/json', //Para decirle que va ha estar exportando objetos de tipo json
   } 

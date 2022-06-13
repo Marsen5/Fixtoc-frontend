@@ -1,25 +1,18 @@
 <template>
   <div>
-  Factura creada con exito.
-  <button @click="descargarPDF(factura)" class="btn btn-primary">Generar pdf</button>
+  Incidencia creada con exito.
+  <button @click="descargarPDF(incidencia)" class="btn btn-primary">Generar pdf</button>
   </div>
 </template>
 
 <script>
-import AppVue from "@/App.vue";
-import Factura from "@/interfaces/Factura";
-import { Incidencia } from "@/interfaces/Incidencia";
-import { getFactura } from "@/services/Factura.api";
-import { defineComponent } from "@vue/runtime-core";
+import { getIncidencia } from "@/services/Incidencia.api";
 import jsPDFInvoiceTemplate, { OutputType, jsPDF } from "jspdf-invoice-template-nodejs";
-import { onBeforeMount } from "vue";
-import { useAppStore } from "@/store/app";
 
 
 export default ({
   data() {
     return {
-      factura: {} ,
       incidencia: {},
       props: {},
       id: "", 
@@ -28,28 +21,26 @@ export default ({
   },
   methods: {
     //Las funciones estan en services/ProductService 
-    async loadFactura(id) {
+    async loadIncidencia(id) {
       console.log('aaaa  ' + id )
-      this.factura = await getFactura(id)
-      console.log('fac' + this.factura)
-      
-      
+      this.incidencia = await getIncidencia(id)
+      console.log('fac' + this.incidencia)
     },
 
-    async descargarPDF(factura) {
-      const props = await this.crearPDF(factura)
+    async descargarPDF(incidencia) {
+      const props = await this.crearPDF(incidencia)
       console.log(props)
       const pdfObject = jsPDFInvoiceTemplate(props);
       pdfObject.Save();
     },
-    async crearPDF( factura) {
+    async crearPDF( incidencia) {
       /* const doc = new jsPDF();
       doc.text('Hola mundo', 10, 10);
       doc.save('a4.pdf'); */
     let props = {
     outputType: OutputType.Save,
     returnJsPDFDocObject: true,
-    fileName: "Factura " + factura._id,
+    fileName: "Incidencia " + incidencia._id,
     orientationLandscape: false,
     compress: true,
     logo: {
@@ -74,34 +65,40 @@ export default ({
         }
     },
     business: {
-        name: "Fixtoc",
+        name: "Dirección de envio:",
         address: "Carrer de la Pau, 2, 12580 Benicarló, Castelló",
         phone: "964 40 56 40",
         email: "info@fixtot.com",
         website: "www.fixtot.com",
     },
     contact: {
-        label: "Factura del Cliente: ",
-        name: String(factura.id_usuario?.nombre) + ", " + String(factura.id_usuario?.apellido),
-        address: String(factura.id_usuario?.direccion),
-        phone: String(factura.id_usuario?.telefono),
-        email: String(factura.id_usuario?.email),
+        label: "Datos del Cliente: ",
+        name: String(incidencia.id_usuario?.nombre) + ", " + String(incidencia.id_usuario?.apellido),
+        address: String(incidencia.id_usuario?.direccion),
+        phone: String(incidencia.id_usuario?.telefono),
+        email: String(incidencia.id_usuario?.email),
     },
     invoice: {
         label: "Factura Nº: ",
-        num: Number(factura._id),
-        invDate: "Factura " + String(factura._id),
+        num: Number(incidencia._id),
+        invDate: "Fecha " + String(incidencia.fechaPedido),
         headerBorder: false,
         tableBodyBorder: false,
         header: [
           {
-            title: "Nº", 
+            title: "ID", 
             style: { 
-              width: 10 
+              width: 60
             } 
           }, 
+          {
+            title: "Producto",
+            style: { 
+              width: 30
+            } 
+          },
           { 
-            title: "Incidencia",
+            title: "Título",
             style: {
               width: 40
             } 
@@ -109,50 +106,19 @@ export default ({
           { 
             title: "Descripción",
             style: {
-              width: 40
+              width: 60
             } 
           }, 
-          { title: "Horas",},
-          { title: "h/€"},
-          { title: "Material"},
-          { title: "Precio"}
         ],
         table: Array.from(Array(1), (item, index)=>([
-            Number(index+1),
-            String(factura.id_incidencia?._id),
-            String(factura.id_incidencia?.titulo) + ": " + String(factura.id_incidencia.descripcion),
-            Number(4),
-            Number(factura.id_incidencia?.id_tecnico?.precio_hora),
-            String("Placa pvc"),
-            Number(23)
+            String(incidencia._id),
+            String(incidencia.producto),
+            String(incidencia.titulo),
+            String(incidencia.descripcion),
         ])),
-        additionalRows: [{
-            col1: 'Total:',
-            col2: String(factura.total),
-            col3: '€',
-            style: {
-                fontSize: 14 //optional, default 12
-            }
-        },
-        {
-            col1: 'IVA:',
-            col2: '21',
-            col3: '%',
-            style: {
-                fontSize: 10 //optional, default 12
-            }
-        },
-        {
-            col1: 'SubTotal:',
-            col2: '93',
-            col3: '€',
-            style: {
-                fontSize: 10 //optional, default 12
-            }
-        }],
         },
     footer: {
-        text: "Factura generada automaticamente",
+        text: "Imprimir este documento y adjuntar al paquete",
     },
     pageEnable: true,
     pageLabel: "Pagina ",
@@ -164,8 +130,7 @@ export default ({
   mounted() { //Va a hacer una petición de lo que esta recibiendo
     if (typeof this.$route.params.id == "string" ) //Solo lo ejecutara si el dato es de tipo string - Esto la hacemos porque sino al pasar el id en getProduct se tiene que pasar un string si o si
       this.id = this.$route.params.id;
-      this.loadFactura(this.id)
-      
+      this.loadIncidencia(this.id)
   },
 })
 </script>

@@ -71,14 +71,24 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('../views/Tecnicos/detallesTecnico.vue')
   },
   {
-    path: '/incidenciasTecnico/:id',
+    path: '/mostrarIncidenciasTecnico/:id',
     name: 'incidenciasTecnico',
-    component: () => import('../views/Tecnicos/incidenciasTecnico.vue')
+    component: () => import('../views/Incidencias/incidenciasTecnico.vue')
   },
   {
     path: '/mostrarFacturas/:id',
     name: 'mostrarFacturas',
     component: () => import('../views/Facturas/mostrarFacturas.vue')
+  },
+  {
+    path: '/detallesIncidencia/:id',
+    name: 'detallesIncidencia',
+    component: () => import('../views/Incidencias/detallesIncidencia.vue')
+  },
+  {
+    path: '/generarpdfIncidencia/:id',
+    name: 'pdfIncidencia',
+    component: () => import('../views/Incidencias/generarPDFIncidencia.vue')
   },
 
   /* {

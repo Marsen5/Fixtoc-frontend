@@ -3,7 +3,7 @@
     <div class="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">
     <div class="grid space-y-2 justify-center px-5 py-6 bg-white shadow w-full rounded-lg divide-y divide-gray-200 ">
     <form @submit.prevent="saveTecnico" class="space-y-3" >
-      <h1 class="text-euclid-32 font-semibold">Nuevo Usuario</h1>
+      <h1 class="text-euclid-32 font-semibold">Nuevo Técnico</h1>
       <!--Nombre y apellidos-->
       <div class="columns-2">
         <div class="grid space-y-0.5">

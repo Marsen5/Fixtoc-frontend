@@ -1,3 +1,4 @@
+import { Material } from './Material';
 import { Tecnico } from './Tecnico';
 export interface Incidencia {
   _id: string;
@@ -10,5 +11,5 @@ export interface Incidencia {
   id_tecnico: Tecnico;
   id_usuario: any;
   horas_reparacion: number;
-  material: string;
+  id_material: any;
 }
