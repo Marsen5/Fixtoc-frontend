@@ -1,4 +1,7 @@
 <template>
+<div class="mx-5 my-2">
+  <img src="@/assets/icons/flecha.svg" @click="irAtras()" width="20" height="22"> 
+</div>
   <div class="min-h-screen bg-gray-100 flex flex-col justify-center sm:py-12">
     <div class="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">
     <div class="grid space-y-2 justify-center px-5 py-6 bg-white shadow w-full rounded-lg divide-y divide-gray-200 ">
@@ -71,6 +74,9 @@ export default defineComponent({
       const res = await createTecnico(this.tecnico) 
       console.log(res)
       this.$router.push({name: "adminTecnicos"})
+      },
+      async irAtras() {
+        this.$router.go(-1)
       }
     }
 })

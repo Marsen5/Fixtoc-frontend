@@ -1,4 +1,7 @@
 <template>
+<div class="mx-5 my-2">
+  <img src="@/assets/icons/flecha.svg" @click="irAtras()" width="20" height="22"> 
+</div>
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg m-5">
   <table class=" table-auto w-full text-sm text-left text-gray-500 dark:text-gray-400">
     <thead class="text-euclid-14 text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -65,6 +68,9 @@ export default defineComponent({
       async handleDelete(idTecnico: string) {
         await deleteTecnico(idTecnico)
         this.loadUsers()
+      },
+       async irAtras() {
+        this.$router.go(-1)
       }
     
     },
