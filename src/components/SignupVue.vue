@@ -25,6 +25,11 @@
         <label class="font-semibold">Password</label>
         <input type="password" v-model="usuario.password" class="p-0.5 border border-gray-500 rounded-[0.5rem]"/>
       </div>
+      <!--Passwd-->
+      <div class="grid space-y-0.5">
+        <label class="font-semibold">Dirección</label>
+        <input type="password" v-model="usuario.direccion" class="p-0.5 border border-gray-500 rounded-[0.5rem]"/>
+      </div>
       <!--Botones-->
         <div class="grid space-y-1">
         <button class="btn btn-primary">Crear usuario</button>
