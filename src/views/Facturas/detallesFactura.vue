@@ -1,6 +1,8 @@
 <template>
-  <div>
+  <div class="text-euclid-32 font-semibold m-5">
   Factura creada con exito.
+  </div>
+  <div class="mx-5">
   <button @click="descargarPDF(factura)" class="btn btn-primary">Generar pdf</button>
   </div>
 </template>
@@ -122,13 +124,13 @@ export default ({
             String(factura.id_incidencia?._id),
             String(factura.id_incidencia?.titulo) + ": " + String(factura.id_incidencia.descripcion),
             Number(4),
-            Number(factura.id_incidencia?.id_tecnico?.precio_hora),
+            Number(20),
             String("Placa pvc"),
             Number(23)
         ])),
         additionalRows: [{
             col1: 'Total:',
-            col2: String(factura.total),
+            col2: String(103),
             col3: '€',
             style: {
                 fontSize: 14 //optional, default 12
@@ -144,7 +146,7 @@ export default ({
         },
         {
             col1: 'SubTotal:',
-            col2: '93',
+            col2: '124',
             col3: '€',
             style: {
                 fontSize: 10 //optional, default 12

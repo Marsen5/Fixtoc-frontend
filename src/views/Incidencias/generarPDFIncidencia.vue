@@ -1,6 +1,8 @@
 <template>
-  <div>
+  <div class="text-euclid-32 font-semibold m-5">
   Incidencia creada con exito.
+  </div>
+  <div class="mx-5">
   <button @click="descargarPDF(incidencia)" class="btn btn-primary">Generar pdf</button>
   </div>
 </template>

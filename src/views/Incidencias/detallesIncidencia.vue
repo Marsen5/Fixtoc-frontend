@@ -69,7 +69,7 @@ export default defineComponent({
   data() {
     return {
       incidencia: {} as Incidencia,
-      material: {} as Material
+      material: {} as Material,
     }
   },
   methods: {
@@ -85,7 +85,7 @@ export default defineComponent({
 
     async createMaterial(){
     await createMaterial(this.material)
-    this.incidencia.id_material = this.material._id}
+    this.incidencia.id_material = this.material._id},
   },
 
   mounted() { //Va a hacer una petición de lo que esta recibiendo

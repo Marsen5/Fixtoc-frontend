@@ -97,7 +97,8 @@ export default defineComponent({
       },
       async irAtras() {
         this.$router.go(-1)
-      }
+      },
+  
     },
     mounted() { //Espera a que cargue la pagina
       this.loadIncidencias()

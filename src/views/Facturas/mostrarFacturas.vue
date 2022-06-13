@@ -2,12 +2,14 @@
   <ul>
     <li 
       v-for="(incidencia, index) in incidencias"
-      :key="index" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-euclid-14"
-      >
-    > 
+      :key="index" class="bg-white border-b text-euclid-14 mx-7 my-2" >
+      <div class="grid grid-cols-2 laptop:grid-cols-4">
+      <div class="font-semibold">
+      Titulo: {{incidencia.titulo}}
+      </div>
       {{ incidencia._id }}
-       <button  @click="generarFactura(incidencia._id)" class="btn-primary">Generar Factura</button>
-      
+      <button  @click="generarFactura(incidencia._id)" class="text-blue-600">Generar Factura</button>
+      </div>
     </li>
   </ul>
 </template>
